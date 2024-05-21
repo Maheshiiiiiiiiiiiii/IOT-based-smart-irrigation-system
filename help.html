@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Your Water for Future</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Your Water for Future</h1>
+        <div class="button-container">
+            <button onclick="languageSettings()">Language Settings</button>
+            <button onclick="displaySettings()">Display Settings</button>
+            <button onclick="notifications()">Notifications and Alerts</button>
+            <button onclick="accountSettings()">Account Settings</button>
+            <button onclick="help()">Help</button>
+        </div>
+    </div>
+
+    <script>
+        function languageSettings() {
+            // Redirect to the language settings page
+            window.location.href = "language.html";
+        }
+
+        function displaySettings() {
+            //  functionality for Display Settings
+           window.location.href = "display.html";
+        }
+
+        function notifications() {
+            // Add functionality for Notifications and Alerts
+            alert("Notifications and Alerts clicked");
+        }
+
+        function accountSettings() {
+            // functionality for Account Settings
+            window.location.href = "account.html";
+        }
+
+        function help() {
+            // functionality for Help
+             window.location.href = "support.html";  
+        }
+    </script>
+</body>
+</html>

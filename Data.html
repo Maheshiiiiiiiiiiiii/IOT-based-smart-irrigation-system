@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analysis</title>
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    #analysis-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 80%;
+        text-align: center;
+    }
+    h2 {
+        color: blue;
+        font-weight: bold;
+    }
+    select {
+        padding: 10px;
+        margin: 10px;
+    }
+    canvas {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<div id="analysis-container">
+    <h2>Data Analysis</h2>
+    <label for="parameter-select">Select Parameter:</label>
+    <select id="parameter-select">
+        <option value="soil_moisture">Soil Moisture</option>
+        <option value="soil_temperature">Soil Temperature</option>
+        <option value="air_humidity">Air Humidity</option>
+        <option value="rain">Rain</option>
+        <option value="water_level">Water Level</option>
+    </select>
+    <canvas id="day-chart" width="800" height="400"></canvas>
+    <canvas id="month-chart" width="800" height="400"></canvas>
+    <canvas id="year-chart" width="800" height="400"></canvas>
+</div>
+
+<script>
+    const parameterSelect = document.getElementById('parameter-select');
+    const dayChart = new Chart(document.getElementById('day-chart').getContext('2d'), {type: 'line'});
+    const monthChart = new Chart(document.getElementById('month-chart').getContext('2d'), {type: 'line'});
+    const yearChart = new Chart(document.getElementById('year-chart').getContext('2d'), {type: 'line'});
+
+    // Dummy data for demonstration
+    const data = {
+        soil_moisture: {
+            day: [10, 20, 30, 40, 50, 60, 70],
+            month: [20, 25, 30, 35, 40, 45, 50],
+            year: [30, 35, 40, 45, 50, 55, 60]
+        },
+        soil_temperature: {
+            day: [25, 26, 27, 28, 29, 30, 31],
+            month: [27, 28, 29, 30, 31, 32, 33],
+            year: [29, 30, 31, 32, 33, 34, 35]
+        },
+        air_humidity: {
+            day: [40, 45, 50, 55, 60, 65, 70],
+            month: [50, 55, 60, 65, 70, 75, 80],
+            year: [60, 65, 70, 75, 80, 85, 90]
+        },
+        rain: {
+            day: [0, 0.5, 1, 1.5, 2, 2.5, 3],
+            month: [2, 4, 6, 8, 10, 12, 14],
+            year: [10, 20, 30, 40, 50, 60, 70]
+        },
+        water_level: {
+            day: [50, 55, 60, 65, 70, 75, 80],
+            month: [60, 65, 70, 75, 80, 85, 90],
+            year: [70, 75, 80, 85, 90, 95, 100]
+        }
+    };
+
+    function updateCharts(parameter) {
+        dayChart.data.labels = ['1', '2', '3', '4', '5', '6', '7'];
+        dayChart.data.datasets = [{label: 'Day', data: data[parameter].day, borderColor: 'blue'}];
+        dayChart.update();
+
+        monthChart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+        monthChart.data.datasets = [{label: 'Month', data: data[parameter].month, borderColor: 'green'}];
+        monthChart.update();
+
+        yearChart.data.labels = ['2022', '2023', '2024', '2025', '2026', '2027', '2028'];
+        yearChart.data.datasets = [{label: 'Year', data: data[parameter].year, borderColor: 'red'}];
+        yearChart.update();
+    }
+
+    parameterSelect.addEventListener('change', function() {
+        const selectedParameter = parameterSelect.value;
+        updateCharts(selectedParameter);
+    });
+
+    // Initially load with the default parameter
+    updateCharts(parameterSelect.value);
+</script>
+</body>
+</html>
+i want to create website for smart irrigation system that reduces the water usage as first UI- web icon should be visible after that login page if the user is not registered yet  create new account page it should contain name,email,contact number and password if the user forget the password forget password page with email , contact number with send button. the dashboard heading should be do you reduce water for future and irrigation control,data analysis,support and help and feedback buttons should be visible. in irrigation control there two buttons name manual control and automatic control should be visible with related picture. in data analysis there should be a selection on soil moisure,soil temperature,air humidity,rain and water level after selecting one of them it should be visible analysed data in line graphs in day,month and year basis,in help and support heading should be manage your water for future and buttons- language settings,display setting,notifications and alerts,account settings,and help. in feedback rate us with rating stars and field to type feedback and submit button
+
+
+
+
+
+
+website theme color - blue,white       1st UI- login , 2nd UI - Create new account (signup), 3rd UI- Forget password , 4th UI(dashboard)- heading- Do you reduce water for future , buttons-irrigation control,data analysis,support and help and feedback , Irrigation control UI- two buttons- manual control and automatic control , data analysis UI-selection on soil moisure,soil temperature,air humidity,rain and water level after that analysed data in line graphs in day,month and year basis. no pricing
+
+
+

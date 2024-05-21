@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Settings - Smart Irrigation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .settings-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .setting-item {
+            margin-bottom: 15px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #007bff;
+        }
+
+        input:focus + .toggle-slider {
+            box-shadow: 0 0 1px #007bff;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Display Settings - Smart Irrigation System</h1>
+        <ul class="settings-list">
+            <li class="setting-item">
+                <label for="moisture-toggle">Soil Moisture Data:</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="moisture-toggle" onclick="toggleDisplay('moisture')">
+                    <span class="toggle-slider"></span>
+                </label>
+            </li>
+            <li class="setting-item">
+                <label for="temperature-toggle">Soil Temperature Data:</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="temperature-toggle" onclick="toggleDisplay('temperature')">
+                    <span class="toggle-slider"></span>
+                </label>
+            </li>
+            <li class="setting-item">
+                <label for="humidity-toggle">Air Humidity Data:</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="humidity-toggle" onclick="toggleDisplay('humidity')">
+                    <span class="toggle-slider"></span>
+                </label>
+            </li>
+            <li class="setting-item">
+                <label for="rainfall-toggle">Rainfall Data:</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="rainfall-toggle" onclick="toggleDisplay('rainfall')">
+                    <span class="toggle-slider"></span>
+                </label>
+            </li>
+            <li class="setting-item">
+                <label for="water-level-toggle">Water Level Data:</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="water-level-toggle" onclick="toggleDisplay('waterLevel')">
+                    <span class="toggle-slider"></span>
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleDisplay(dataType) {
+            const isChecked = document.getElementById(`${dataType}-toggle`).checked;
+            localStorage.setItem(dataType, isChecked ? 'true' : 'false');
+            window.opener.refreshData();
+        }
+    </script>
+</body>
+</html>

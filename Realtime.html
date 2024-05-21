@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Irrigation System Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .sensor-data {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .sensor-box {
+            width: calc(33.33% - 20px);
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .sensor-box h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .sensor-box p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .high-reading {
+            background-color: #ff9999; /* Red */
+        }
+
+        .normal-reading {
+            background-color: #99ff99; /* Green */
+        }
+
+        .refresh-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .refresh-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Irrigation System Dashboard</h1>
+        <div class="sensor-data" id="sensor-data">
+            <!-- Sensor data will be displayed here -->
+        </div>
+        <button class="refresh-button" onclick="refreshData()">Refresh Data</button>
+    </div>
+
+    <script>
+        // Function to fetch and display sensor data
+        function refreshData() {
+            // Replace this with actual API endpoint to fetch real-time data
+            const sensorData = {
+                soilMoisture: Math.random() * 100,
+                soilTemperature: Math.random() * 50,
+                airHumidity: Math.random() * 100,
+                rain: Math.random() * 10,
+                waterLevel: Math.random() * 100
+            };
+
+            // Update sensor data on the dashboard
+            const sensorDataContainer = document.getElementById('sensor-data');
+            sensorDataContainer.innerHTML = `
+                <div class="sensor-box ${sensorData.soilMoisture > 70 ? 'high-reading' : 'normal-reading'}">
+                    <h2>Soil Moisture</h2>
+                    <p>${sensorData.soilMoisture.toFixed(2)}%</p>
+                </div>
+                <div class="sensor-box ${sensorData.soilTemperature > 30 ? 'high-reading' : 'normal-reading'}">
+                    <h2>Soil Temperature</h2>
+                    <p>${sensorData.soilTemperature.toFixed(2)}°C</p>
+                </div>
+                <div class="sensor-box ${sensorData.airHumidity > 80 ? 'high-reading' : 'normal-reading'}">
+                    <h2>Air Humidity</h2>
+                    <p>${sensorData.airHumidity.toFixed(2)}%</p>
+                </div>
+                <div class="sensor-box ${sensorData.rain > 5 ? 'high-reading' : 'normal-reading'}">
+                    <h2>Rain</h2>
+                    <p>${sensorData.rain.toFixed(2)}mm</p>
+                </div>
+                <div class="sensor-box ${sensorData.waterLevel > 80 ? 'high-reading' : 'normal-reading'}">
+                    <h2>Water Level</h2>
+                    <p>${sensorData.waterLevel.toFixed(2)}%</p>
+                </div>
+            `;
+        }
+
+        // Initial data refresh on page load
+        refreshData();
+
+        // Set interval to refresh data every 5 seconds (adjust as needed)
+        setInterval(refreshData, 5000);
+    </script>
+</body>
+</html>

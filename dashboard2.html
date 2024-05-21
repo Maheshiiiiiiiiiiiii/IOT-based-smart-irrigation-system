@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #water-management-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="water-management-container">
+        <h1>Do you reduce water for future?</h1>
+        <button class="button" onclick="irrigationControl()">Irrigation Control</button>
+<button class="button" onclick="Realtimedata()">Realtime Data</button>
+        <button class="button" onclick="dataAnalysis()">Data Analysis</button>
+        <button class="button" onclick="supportAndHelp()">Support and Help</button>
+        <button class="button" onclick="feedback()">Feedback</button>
+    </div>
+
+    <script>
+        function irrigationControl() {
+            window.location.href = "irrigation.html"; // Redirect to irrigation page
+        }
+function Realtimedata() {
+            window.location.href = "Realtime.html"; 
+        }
+
+        function dataAnalysis() {
+             window.location.href = "analysis.html";
+                    }
+
+        function supportAndHelp() {
+           
+            // Add your redirection logic here
+ window.location.href = "help.html";
+                    
+        }
+
+        function feedback() {
+           
+            // Add your redirection logic here
+window.location.href = "feedback.html";
+        }
+    </script>
+</body>
+</html>

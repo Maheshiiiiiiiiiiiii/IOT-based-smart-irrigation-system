@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .graph-heading {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #graph-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Analysis</h1>
+        <div id="graph-container">
+            <!-- Graphs will be displayed here -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Data types for analysis
+        const dataTypes = ['soil_moisture', 'soil_temperature', 'air_humidity', 'rain', 'water_level'];
+
+        // Generate and display graphs for each data type
+        dataTypes.forEach(dataType => {
+            const data = generateMockData(dataType, 'day'); // Default interval is 'day'
+            showGraph(dataType, data);
+        });
+
+        function showGraph(dataType, data) {
+            // Create container for the graph
+            const graphContainer = document.getElementById('graph-container');
+            const graphWrapper = document.createElement('div');
+            graphContainer.appendChild(graphWrapper);
+
+            // Add heading for the graph
+            const heading = document.createElement('h2');
+            heading.classList.add('graph-heading');
+            heading.textContent = dataType.replace('_', ' ').toUpperCase();
+            graphWrapper.appendChild(heading);
+
+            // Create canvas element for the graph
+            const canvas = document.createElement('canvas');
+            canvas.id = `${dataType}-chart`;
+            graphWrapper.appendChild(canvas);
+
+            // Initialize chart
+            const ctx = canvas.getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: dataType.replace('_', ' ').toUpperCase(),
+                        data: data.values,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            type: 'time',
+                            time: {
+                                unit: 'day'
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        function generateMockData(dataType, interval) {
+            // Generating mock data for demonstration
+            const labels = [];
+            const values = [];
+
+            const startDate = new Date(2024, 0, 1);
+            const endDate = new Date(2024, 11, 31);
+
+            for (let date = startDate; date <= endDate; date.setDate(date.getDate() + 1)) {
+                labels.push(new Date(date));
+                values.push(Math.random() * 100);
+            }
+
+            return { labels, values };
+        }
+    </script>
+</body>
+</html>
